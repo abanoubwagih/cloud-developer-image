@@ -1,12 +1,13 @@
 import express, {Request, Response} from 'express';
-
 import bodyParser from 'body-parser';
-import {deleteLocalFiles, filterImageFromURL} from "./util/util";
+import {filterImageFromURL, deleteLocalFiles} from './util/util';
 
 (async () => {
 
   // Init the Express application
+  // const cors = require('cors');
   const app = express();
+  // app.use(cors())
 
   // Set the network port
   const port = process.env.PORT || 8082;
@@ -29,9 +30,9 @@ import {deleteLocalFiles, filterImageFromURL} from "./util/util";
   //   the filtered image file [!!TIP res.sendFile(filteredpath); might be useful]
 
   /**************************************************************************** */
-  app.get("/filteredimage", async (req: Request, res: Response) => {
-
-    const {image_url} = req.query.image_url.toString();
+  app.get("/filteredimage/", async (req: Request, res: Response) => {
+;
+const {image_url} = req.query.image_url.toString();
     if (!image_url) {
       res.status(400).send("image url is required");
     }
